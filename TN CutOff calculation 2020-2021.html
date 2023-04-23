@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cut-Off Calculation</title>
+    <style>
+        body {
+            background-color: beige;
+            font-family: Arial, sans-serif;
+        }
+        
+        .card {
+            background-color: pink;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+        
+        .card h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .card input[type="number"] {
+            border: none;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        
+        .card button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>The current problem how to calculate state board 2020-2021 total marks!!</h1>
+        <h1>Let's have a solution</h1>
+        <h1>Enter your Subject Marks in 10 th </h1>
+        <input type="number" id="tamil" placeholder="Tamil"><br>
+        <input type="number" id="english" placeholder="English"><br>
+        <input type="number" id="maths" placeholder="Maths"><br>
+        <input type="number" id="science" placeholder="Science"><br>
+        <input type="number" id="social-science" placeholder="Social Science"><br>
+        <h1>Enter your Subject Marks in 11 th excluding your internal and practical marks</h1>
+        <input type="number" id="tamil-11" placeholder="Tamil"><br>
+        <input type="number" id="english-11" placeholder="English"><br>
+        <input type="number" id="maths-11" placeholder="Maths"><br>
+        <input type="number" id="chemistry" placeholder="Chemistry"><br>
+        <input type="number" id="physics" placeholder="Physics"><br>
+        <input type="number" id="cs-or-bio" placeholder="Computer Science or Biology"><br>
+        <button onclick="calculate()">Submit</button>
+        <p id="total"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            const tamil = Number(document.getElementById("tamil").value);
+            const english = Number(document.getElementById("english").value);
+            const maths = Number(document.getElementById("maths").value);
+            const science = Number(document.getElementById("science").value);
+            const socialScience = Number(document.getElementById("social-science").value);
+            const tamil11 = Number(document.getElementById("tamil-11").value);
+            const english11 = Number(document.getElementById("english-11").value);
+            const maths11 = Number(document.getElementById("maths-11").value);
+            const chemistry = Number(document.getElementById("chemistry").value);
+            const physics = Number(document.getElementById("physics").value);
+            const csOrBio = Number(document.getElementById("cs-or-bio").value);
+            const du = [];
+            du[0] = tamil;
+            du[1] = english;
+            du[2] = maths;
+            du[3] = science;
+            du[4] = socialScience;
+            du.sort();
+            const y = []
+            y[0] = tamil11;
+            y[1] = english11;
+            y[2] = maths11;
+            y[3] = chemistry;
+            y[4] = physics;
+            y[5] = csOrBio;
+            const k = (((du[4] + du[3] + du[2]) / 300) * 0.5) * 100
+            const x = k + 30;
+            ab = ((((y[0]) / 90) * 100) * 0.2)
+            bc = ((((y[1]) / 90) * 100) * 0.2)
+            cd = ((((y[2]) / 90) * 100) * 0.2)
+            de = ((((y[3]) / 70) * 100) * 0.2)
+            ef = ((((y[4]) / 70) * 100) * 0.2)
+            fg = ((((y[5]) / 70) * 100) * 0.2)
+            const Total = ((ab + x) + (bc + x) + (cd + x) + (de + x) + (ef + x) + (fg + x));
+            const finalcutoff = ((cd + x) + ((de + x) / 2) + ((ef + x) / 2))
+            document.getElementById("total").innerHTML = `Your total marks is ${Total} and your cut-off mark is ${finalcutoff}.`;
+        }
+    </script>
+</body>
+
+</html>
